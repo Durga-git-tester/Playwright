@@ -1,0 +1,19 @@
+{
+   "baseData": {
+      "userName": "//input[@name='username']",
+      "passWord": "//input[@name='password']",
+      "login": "//button[@type='submit']"
+   },
+   "jobData":{
+      "admin": "//span[text()='Admin']",
+      "jobTab": "//span[text()='Job ']",
+      "jobTitleTab": "//a[text()='Job Titles']",
+      "addButton": "//button[text()=' Add ']",
+      "jobTitle": "//label[text()='Job Title']/following::div/input[contains(@class, 'active')]",
+      "____comment" : "//label[text()='Job Title']/parent::div/following-sibling::div/input",
+      "saveJob": "//button[text()=' Save ']",
+      "backPage": "//div[contains(@class, 'orangehrm-background')]",
+      "---commitverifyJob": "//div[@role='rowgroup']/div",
+      "VerifyNewJob": "(//span[@class='oxd-text oxd-text--span'])[1]"
+   }
+}
