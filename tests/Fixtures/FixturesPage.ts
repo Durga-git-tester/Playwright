@@ -1,4 +1,4 @@
-import { test as baseTest, expect as baseexpect } from "@playwright/test";
+import { test as baseTest, expect as baseExpect } from "@playwright/test";
 
 import adminData from "../Fixtures/TestData/AdminData.json";
 import  locators from "../Fixtures/TestData/Locators.json";
@@ -17,7 +17,6 @@ export const test = baseTest.extend<AllFixtures>({
     const adminLocators = locators;
     await use(adminLocators);
   },
-
   adminTestData: async ({}, use) => {
     const adminTestData = adminData;
     await use(adminTestData);
@@ -31,4 +30,4 @@ export const test = baseTest.extend<AllFixtures>({
     await use(jopPage);
   }
 });
-export const expect = baseexpect;
+export const expect = baseExpect;
