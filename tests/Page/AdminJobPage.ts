@@ -30,7 +30,7 @@ export class AdminJobPage {
         console.log(jobTitle);
         await this.page.locator(this.jobTabLocators.jobData.jobTitle).fill(jobTitle);
         await this.page.getByPlaceholder("Type description here").fill(adminData.jobTab.jobDescription);
-        await this.page.setInputFiles(this.jobTabLocators.jobData.fileUpload, path.join(__dirname, "butterfly.gif"));
+        await this.page.setInputFiles(this.jobTabLocators.jobData.fileUpload, path.join(__dirname, "../Fixtures/Attachments/butterfly.gif"));
         await this.page.locator(this.jobTabLocators.jobData.saveJob).click();
         return jobTitle;       
       }
