@@ -1,6 +1,6 @@
 {
    "baseData": {
-      "userName": "//input[@name='username']",
+      "userName": "input[name='username']",
       "passWord": "//input[@name='password']",
       "login": "//button[@type='submit']"
    },
