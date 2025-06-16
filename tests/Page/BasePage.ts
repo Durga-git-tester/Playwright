@@ -1,4 +1,4 @@
-import { Page } from "@playwright/test";
+import { expect, Page } from "@playwright/test";
 
 export class BasePage {
 page: Page;
@@ -15,5 +15,8 @@ page: Page;
   }
   async fill (locator:any, testData:any){
     await this.page.locator(locator).fill(testData);
+  }
+  async toBeVisible (locator: any){
+    await expect(this.page.locator(locator)).toBeVisible();
   }
 }
