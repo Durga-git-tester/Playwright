@@ -1,0 +1,17 @@
+{
+    "webTables":{
+        "add": "button#addNewRecordButton",
+        "registrationForm": "div.modal-content",
+        "firstName": "input#firstName",
+        "lastName": "input#lastName",
+        "email": "input#userEmail",
+        "age": "input#age",
+        "salary": "input#salary",
+        "department": "input#department",
+        "submit": "button[id='submit']",
+        "recordTable":"div.rt-table div.rt-tbody",
+        "edit": "span[title=Edit]",
+        "delete": "span[title='Delete']"
+    }
+   
+}

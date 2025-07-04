@@ -14,13 +14,11 @@ export class LoginPage extends BasePage{
     this.adminLocator = adminLocator;
     this.adminTestData = adminTestData;
   }
-
-  
-  async enterUserName() {
-    await this.fill(this.adminLocator.baseData.userName,this.adminTestData.baseValue.userName);
+    async enterUserName() {
+    await this.fill(this.adminLocator.baseData.userName,process.env.USERNAME);
   }
   async enterPassword() {
-    await this.fill(this.adminLocator.baseData.passWord,this.adminTestData.baseValue.passWord);
+    await this.fill(this.adminLocator.baseData.passWord,process.env.PASSWORD);
      }
   async clickSignIn() {
     await this.click(this.adminLocator.baseData.login);
@@ -30,7 +28,7 @@ export class LoginPage extends BasePage{
   }
 
   async login() {
-    await this.gotoUrl(this.adminTestData.baseValue.url);
+    await this.gotoUrl(process.env.URL);
     await this.enterUserName();
     await this.enterPassword();
     await this.clickSignIn();

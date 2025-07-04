@@ -31,7 +31,14 @@ export class AdminJobPage extends BasePage{
         await this.click(this.adminLocators.jobData.addButton);     
         await this.fill(this.adminLocators.jobData.jobTitle,jobTitle);
         await this.page.getByPlaceholder("Type description here").fill(adminData.jobTab.jobDescription);
-        await this.page.setInputFiles(this.adminLocators.jobData.fileUpload, path.join(__dirname, "../Fixtures/Attachments/butterfly.gif"));
+        // const pathLocation= path.join(__dirname, "../Fixtures/Attachments/butterfly.gif");
+        // await this.page.setInputFiles(this.adminLocators.jobData.fileUpload, pathLocation);
+
+        const fileChooserPromise = this.page.waitForEvent("filechooser");
+        await this.page.getByText('Browse').click();
+        const fileChooser = await fileChooserPromise;
+        await fileChooser.setFiles(path.join(__dirname, "../Fixtures/Attachments/butterfly.gif"));
+
         await this.click(this.adminLocators.jobData.saveJob);
         return jobTitle;       
       }

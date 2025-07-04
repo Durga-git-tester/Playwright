@@ -1,0 +1,11 @@
+{
+    "webTables":{
+        "url": "https://demoqa.com/webtables",
+        "firstName": "sunitha",
+        "lastName": "Aiswarya",
+        "email": "testemail@gamilc.com",
+        "age": "21",
+        "salary": "210000",
+        "Department": "IT"        
+}
+}
