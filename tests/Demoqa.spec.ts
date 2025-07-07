@@ -6,7 +6,6 @@ test("webtables", async({webTablePage})=>{
 });
 
 test("SelectMenu", async({selectMenuPage})=>{
-    await selectMenuPage.gotoSelectMenu();
-    await selectMenuPage.selectValue();
-    await selectMenuPage.selectOne();
+    await selectMenuPage.selectOptions();
+    
 });
