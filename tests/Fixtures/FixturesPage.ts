@@ -2,20 +2,22 @@ import { test as baseTest, expect as baseExpect } from "@playwright/test";
 
 import adminData from "../Fixtures/TestData/AdminData.json";
 import  locators from "../Fixtures/TestData/Locators.json";
-import webTableData from "../Fixtures/TestData/webTableData.json";
-import webTableLoc  from "../Fixtures/TestData/webTableLoc.json";
+import demoQaData from "../Fixtures/TestData/demoQaData.json";
+import demoQaLoc  from "../Fixtures/TestData/demoQaLoc.json";
 import {WebTablePage} from "../Page/WebTablePage"; 
 import { LoginPage } from "../Page/LoginPage";
 import { AdminJobPage } from "../Page/AdminJobPage";
+import { SelectMenuPage } from "../Page/SelectMenuPage";
 
 type AllFixtures = {
   adminLocators: typeof locators;
   adminTestData: typeof adminData;
-  webData: typeof webTableData;
-  webLoc: typeof webTableLoc;
+  demoData: typeof demoQaData;
+  demoLoc: typeof demoQaLoc;
   loginPage: LoginPage;
   jopPage: AdminJobPage;
   webTablePage: WebTablePage;
+  selectMenuPage: SelectMenuPage;
 };
 
 export const test = baseTest.extend<AllFixtures>({
@@ -35,17 +37,21 @@ export const test = baseTest.extend<AllFixtures>({
     const jopPage= new AdminJobPage (page, adminLocators, adminTestData);
     await use(jopPage);
   },
-  webData: async({}, use)=>{
-    const webData=  webTableData;
+  demoData: async({}, use)=>{
+    const webData=  demoQaData;
     await use(webData);
   },
-  webLoc: async({}, use)=>{
-    const webLoc= webTableLoc;
-    await use (webLoc);
+  demoLoc: async({}, use)=>{
+    const demoLoc= demoQaLoc;
+    await use (demoLoc);
   },
-  webTablePage: async({page, webLoc, webData}, use)=>{
-    const webTablePage= new WebTablePage(page, webLoc, webData)
+  webTablePage: async({page, demoLoc, demoData }, use)=>{
+    const webTablePage= new WebTablePage(page, demoLoc, demoData)
     await use( webTablePage);
+  },
+  selectMenuPage: async({page, demoLoc, demoData}, use)=>{
+    const selectMenuPage =new SelectMenuPage(page, demoLoc, demoData)
+    await use(selectMenuPage);
   }
 
 });

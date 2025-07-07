@@ -9,9 +9,13 @@
         "salary": "input#salary",
         "department": "input#department",
         "submit": "button[id='submit']",
-        "recordTable":"div.rt-table div.rt-tbody",
+        "recordTable":"div.rt-table div.rt-tbody div.rt-tr-group",
         "edit": "span[title=Edit]",
         "delete": "span[title='Delete']"
-    }
-   
+    } ,
+    "selectMenu":{
+        "selectValue": "div#withOptGroup div.css-tlfecz-indicatorContainer",
+        "selectOne": "div#selectOne .css-tlfecz-indicatorContainer"
+
+    }  
 }

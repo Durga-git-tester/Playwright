@@ -1,18 +1,18 @@
 import { BasePage } from "./Basepage";
-import testdata from "../Fixtures/TestData/webTableData.json";
-import locator from "../Fixtures/TestData/webTableLoc.json"
+import testData from "../Fixtures/TestData/demoQaData.json";
+import locator from "../Fixtures/TestData/demoQaLoc.json"
 import { expect } from "@playwright/test";
 
 export class WebTablePage extends BasePage{
-    webData: typeof testdata;
-    webLoc: typeof locator;
+    demoData: typeof testData;
+    demoLoc: typeof locator;
     generateRandomFirstName: string= '';
     generateRandomLastName: string='';
 
-    constructor(page: any,webLoc: typeof locator, webData: typeof testdata){
+    constructor(page: any,demoLoc: typeof locator, demoData: typeof testData){
         super(page);
-        this.webData= webData;
-        this.webLoc= webLoc;
+        this.demoLoc= demoLoc;
+        this.demoData= demoData;
     }
     async createRecord(){
         await this.gotoWebTableDemaQa();
@@ -30,57 +30,66 @@ export class WebTablePage extends BasePage{
         await this.deleteRecord();
     }
     async gotoWebTableDemaQa(){
-        await this.gotoUrl(this.webData.webTables.url);
+        await this.gotoUrl(this.demoData.webTables.url);
     }
     async clickAdd(){
-        await this.click(this.webLoc.webTables.add);
-        await expect(this.page.locator(this.webLoc.webTables.registrationForm)).toBeVisible();
+        await this.click(this.demoLoc.webTables.add);
+        await expect(this.page.locator(this.demoLoc.webTables.registrationForm)).toBeVisible();
     }
    async enterFirstName(){
-        this.generateRandomFirstName=await this.generateRandomName(this.webLoc.webTables.firstName, this.webData.webTables.firstName);
+        this.generateRandomFirstName=await this.generateRandomName(this.demoLoc.webTables.firstName, this.demoData.webTables.firstName);
         return this.generateRandomFirstName;
     }
     async enterLastName(){
-        this.generateRandomLastName=await this.generateRandomName(this.webLoc.webTables.lastName, this.webData.webTables.lastName);
+        this.generateRandomLastName=await this.generateRandomName(this.demoLoc.webTables.lastName, this.demoData.webTables.lastName);
         return this.generateRandomLastName;
     }
     async enterEmail(){
-        await this.fill(this.webLoc.webTables.email, this.webData.webTables.email);
+        await this.fill(this.demoLoc.webTables.email, this.demoData.webTables.email);
      }
     async enterAge(){
-        await this.fill(this.webLoc.webTables.age,this.webData.webTables.age);
+        await this.fill(this.demoLoc.webTables.age,this.demoData.webTables.age);
     } 
     async enterSalary(){
-        await this.fill(this.webLoc.webTables.salary, this.webData.webTables.salary);
+        await this.fill(this.demoLoc.webTables.salary, this.demoData.webTables.salary);
     }
     async enterDepartment(){
-        await this.fill(this.webLoc.webTables.department, this.webData.webTables.Department);
+        await this.fill(this.demoLoc.webTables.department, this.demoData.webTables.Department);
     }
     async submitForm(){
-        await this.click(this.webLoc.webTables.submit);
+        await this.click(this.demoLoc.webTables.submit);
     }
     async searchtheDataInWebTable(){
-        const row = this.page.locator(this.webLoc.webTables.recordTable).filter({ hasText: this.generateRandomFirstName });
-        await expect(row.getByText(this.generateRandomLastName)).toBeVisible();
-        await expect(row.getByText(this.webData.webTables.email)).toBeVisible();
-        await expect(row.getByText(this.webData.webTables.age, {exact: true})).toBeVisible();
-        await expect(row.getByText(this.webData.webTables.salary, {exact: true})).toBeVisible();
-        await expect(row.getByText(this.webData.webTables.Department, {exact: true})).toBeVisible();
+        const row = this.page
+        .locator(this.demoLoc.webTables.recordTable)
+        .getByRole('row', {
+          name: `${this.generateRandomFirstName} ${this.generateRandomLastName} ${this.demoData.webTables.age} ${this.demoData.webTables.email} ${this.demoData.webTables.salary} ${this.demoData.webTables.Department}`,
+        });      
+      
+        console.log(await row.textContent());
+        await expect(this.page
+        .locator(this.demoLoc.webTables.recordTable)
+        .getByRole('row', {
+          name: `${this.generateRandomFirstName} ${this.generateRandomLastName} ${this.demoData.webTables.age} ${this.demoData.webTables.email} ${this.demoData.webTables.salary} ${this.demoData.webTables.Department}`,
+        })
+        ).toBeVisible();
     }
     async editRecord(){
-      //  await this.page.getByRole(this.webLoc.webTables.recordTable, {hasText: this.generateRandomFirstName } ).locator(this.webLoc.webTables.edit).click();
-        await expect(this.page.locator(this.webLoc.webTables.registrationForm)).toBeVisible();
+        await this.page.locator(this.demoLoc.webTables.recordTable).filter({hasText: this.generateRandomFirstName }).locator(this.demoLoc.webTables.edit).click();
+        await expect(this.page.locator(this.demoLoc.webTables.registrationForm)).toBeVisible();
         await this.enterFirstName();
         await this.enterLastName();
         await this.submitForm();        
     }
     async verifyEditedDetailIsDisplayed(){
-        const row = this.page.locator(this.webLoc.webTables.recordTable).filter({ hasText: this.generateRandomFirstName });
-        await expect(row.getByText(this.generateRandomLastName)).toBeVisible(); 
+        const updatedrow = this.page.locator(this.demoLoc.webTables.recordTable).filter({ hasText: this.generateRandomFirstName });
+        await expect(updatedrow.getByText(this.generateRandomLastName)).toBeVisible(); 
+        console.log(await updatedrow.textContent());
     }
     async deleteRecord(){
-        await this.click(this.webLoc.webTables.delete);
-        const row = this.page.locator(this.webLoc.webTables.recordTable).filter({ hasText: this.generateRandomFirstName });
+        await this.page.locator(this.demoLoc.webTables.recordTable).filter({hasText: this.generateRandomFirstName }).locator(this.demoLoc.webTables.delete).click();
+             
+        const row = this.page.locator(this.demoLoc.webTables.recordTable).filter({ hasText: this.generateRandomFirstName });
         await expect(row).toHaveCount(0);
     }
    

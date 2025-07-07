@@ -7,5 +7,9 @@
         "age": "21",
         "salary": "210000",
         "Department": "IT"        
-}
+},
+
+    "selectMenu":{
+        "url": "https://demoqa.com/select-menu"
+    }
 }
