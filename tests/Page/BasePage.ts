@@ -6,7 +6,7 @@ page: Page;
       this.page=page;
   }
   async gotoUrl(url: any) {
-    await this.page.goto(url);
+    await this.page.goto(url, {waitUntil: 'domcontentloaded'});
   }
   async click(locator: any){
     await this.page.locator(locator).click();

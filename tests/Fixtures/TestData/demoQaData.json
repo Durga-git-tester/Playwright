@@ -8,8 +8,16 @@
         "salary": "210000",
         "Department": "IT"        
 },
-
     "selectMenu":{
-        "url": "https://demoqa.com/select-menu"
+        "url": "https://demoqa.com/select-menu",
+        "selectValue": "Group 1, option 1",
+        "selectOne": "Prof."
+    },
+    "textBox":{
+        "url": "https://demoqa.com/text-box",
+        "fullName": "lorra vinsi",
+        "email": "lorravinsi@gmail.com",
+        "currentAddress": "xxx vity, vef stresst",
+        "permanentAddress": "xyz city"
     }
 }

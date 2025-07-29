@@ -15,7 +15,19 @@
     } ,
     "selectMenu":{
         "selectValue": "div#withOptGroup div.css-tlfecz-indicatorContainer",
-        "selectOne": "div#selectOne .css-tlfecz-indicatorContainer"
+        "selectOne": "div#selectOne .css-tlfecz-indicatorContainer",
+        "oldStyleSelect": "select#oldSelectMenu"
+    },
+    "TextBox": {
+        "fullName": "input#userName",
+        "email": "input#userEmail",
+        "currentAddress": "textarea#currentAddress",
+        "permenentAddress": "textarea#permanentAddress",
+        "submitBtn": "button#submit",
+        "output": "div#output div.border",
+        "--output": "div#output div.border p#name:has-text('replace') p#email:has-text('replace1') p#currentAddress:has-text('replace2') p#permanentAddress('replace3')"
+        
 
-    }  
+    }
+
 }

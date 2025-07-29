@@ -16,18 +16,16 @@ async selectOptions(){
     await this.selectValue();
     await this.selectOne();
 }
-
 async gotoSelectMenu(){
     await this.gotoUrl(this.demoData.selectMenu.url);
     
 }
 async selectValue(){
     await this.page.locator(this.demoLoc.selectMenu.selectValue).click();
-    await this.page.getByText('Group 1, option 1', { exact: true }).click();
+    await this.page.getByText(this.demoData.selectMenu.selectValue, { exact: true }).click();
 }
-
 async selectOne(){
     await this.click(this.demoLoc.selectMenu.selectOne);
-    await this.page.getByText('Prof.').click();
-   }
+    await this.page.getByText(this.demoData.selectMenu.selectOne).click();
+}
 }
