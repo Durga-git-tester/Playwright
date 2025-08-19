@@ -26,8 +26,12 @@
         "submitBtn": "button#submit",
         "output": "div#output div.border",
         "--output": "div#output div.border p#name:has-text('replace') p#email:has-text('replace1') p#currentAddress:has-text('replace2') p#permanentAddress('replace3')"
-        
-
+    },
+    "checkBox":{
+        "expandBtn":"button[aria-label='Expand all']",
+        "collapseBtn": "button[aria-label='Collapse all']",
+        "homeCheckBox": "label[for='tree-node-home'] span.rct-checkbox",
+        "result": "div#result"
     }
 
 }

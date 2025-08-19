@@ -9,6 +9,7 @@ import { LoginPage } from "../Page/LoginPage";
 import { AdminJobPage } from "../Page/AdminJobPage";
 import { SelectMenuPage } from "../Page/SelectMenuPage";
 import { TextBoxPage } from "../Page/TextBoxPage";
+import { CheckBoxPage } from "../Page/CheckBoxPage";
 
 type AllFixtures = {
   adminLocators: typeof locators;
@@ -20,6 +21,7 @@ type AllFixtures = {
   webTablePage: WebTablePage;
   selectMenuPage: SelectMenuPage;
   textBoxPage: TextBoxPage;
+  checkBoxPage: CheckBoxPage;
 };
 
 export const test = baseTest.extend<AllFixtures>({
@@ -58,6 +60,10 @@ export const test = baseTest.extend<AllFixtures>({
   textBoxPage: async({page, demoLoc, demoData}, use)=>{
     const textBoxPage = new TextBoxPage(page, demoLoc, demoData)
     await use(textBoxPage);
+  },
+  checkBoxPage: async({page,demoLoc, demoData}, use)=>{
+    const checkBoxPage= new CheckBoxPage(page, demoLoc,demoData)
+    await use(checkBoxPage);
   }
 
 });

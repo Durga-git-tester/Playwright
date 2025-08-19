@@ -19,5 +19,8 @@
         "email": "lorravinsi@gmail.com",
         "currentAddress": "xxx vity, vef stresst",
         "permanentAddress": "xyz city"
+    },
+    "checkBox":{
+        "url": "https://demoqa.com/checkbox"
     }
 }

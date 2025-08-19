@@ -13,5 +13,8 @@ test("SelectMenu", async({selectMenuPage})=>{
 test("TextBox", async({textBoxPage})=>{
     await textBoxPage.textBox();
 });
+test("checkBox", async({checkBoxPage})=>{
+    await checkBoxPage.checkBox();
+});
 
 })
